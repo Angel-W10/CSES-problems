@@ -3,14 +3,18 @@
 
 using namespace std;
 
-bool check_apt(int buyer, int apt){
-    if(apt<5){
-        if(buyer==apt || buyer == apt+5){
+bool check_apt(int buyer, int apt, int diff){
+    // if(apt<diff){
+    //     for (int i = apt; i <= apt+diff ;i ++){
+    //         if(buyer==i){
+    //             return true;
+    //         }
+    //     }
+    // }
+    for (int i = apt-diff ; i <= apt+diff ; i ++){
+        if(buyer==i){
             return true;
         }
-    }
-    if(buyer==apt || buyer == apt+5 || buyer == apt-5){
-        return true;
     }
     return false;
 }
@@ -37,21 +41,28 @@ int main(){
     for (int i = 0; i< num_apts;i++){
         cin>>apts[i];
     }
+    // int c = 0;
 
     // sorting the arrays
     sort(buyers, buyers + num_buyers);
     sort(apts, apts + num_apts);
 
     for (int b = 0 ; b < num_buyers ; b ++){
+
         for (int a = 0 ; a < num_apts ; a++){
-            if(check_apt(buyers[b], apts[a])==true){
-                // cout<<buyers[b]<<" "<<apts[a]<<endl;
+            cout<<"checking: "<<buyers[b]<<" "<<apts[a]<<endl;
+            if(check_apt(buyers[b], apts[a], diff)==true){
+                cout<<"approved"<<endl;
                 allocation++;
                 b++;
+                c++;
                 break;
             }
         }
     }
+
+
+    // MAKE RECURSION BY REMOVING THE ELEMENT 
 
     cout<<allocation;
 

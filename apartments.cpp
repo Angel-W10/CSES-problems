@@ -11,6 +11,7 @@ bool check_apt(int buyer, int apt, int diff){
     //         }
     //     }
     // }
+    
     for (int i = apt-diff ; i <= apt+diff ; i ++){
         if(buyer==i){
             return true;
@@ -19,6 +20,7 @@ bool check_apt(int buyer, int apt, int diff){
     return false;
 }
 
+aihfwim;
 
 int main(){
 
